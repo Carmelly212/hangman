@@ -1,0 +1,75 @@
+MAX_TRIES = 6
+HANGMAN_ASCII_ART = """     _    _
+    | |  | |
+    | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __
+    |  __  |/ _` | '_ \ / _` | '_ ` _ \ / _` | '_  \ \
+
+    | |  | | (_| | | | | (_| | | | | | | (_| | | | |
+    |_|  |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                         __/ |
+                        |___/"""
+print (HANGMAN_ASCII_ART)
+print('Max Tries -->',MAX_TRIES)
+
+letter_guessed = input('Guess Letter:  ')
+
+
+
+
+def is_valid_input(letter_guessed, history):
+
+        chk = letter_guessed.isalpha()
+
+        if (len(letter_guessed) > 1 ) and chk != True:
+            print(False) and None
+        elif chk != True:
+            print (False)
+        elif len(letter_guessed) > 1:
+            print (False)
+        elif letter_guessed in history:
+            print ("X")
+        else:
+            print(True)
+
+
+history = ['m', 'b','a', 'o', 't',]
+secret_word = 'tomato'
+
+
+is_valid_input(letter_guessed, history)
+letter_guessed_history = history , history.append(letter_guessed.lower())
+alterd_history = ' --> '.join(sorted(history))
+
+print('GUESSED:  ' , (alterd_history))
+print("\n") #space
+
+secret_word = 'tomato'
+
+new_word = []
+
+def show_hidden_word(secret_word, history):
+
+    for x in secret_word:
+        if x in history:
+            new_word.append(x)
+        else:
+            new_word.append('_')
+
+show_hidden_word(secret_word,history)
+print(" ".join(new_word))
+
+
+
+
+
+
+
+def check_win(secret_word, history):
+
+    for char in secret_word:
+        if char in history:
+             return True
+        elif char not in history:
+             return False
+
+print(check_win(secret_word, history))
